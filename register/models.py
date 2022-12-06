@@ -6,20 +6,20 @@ class Tecnologias(models.Model):
     def __str__(self):
         return self.tecnologia
 
+class Nichos(models.Model):
+    nicho = models.CharField(max_length=40)
+
+    def __str__(self):
+        return self.nicho
+
 class Empresa(models.Model):
-    choices_nicho_mercado = (
-        ('M', 'Marketing'),
-        ('A', 'Alimentação'),
-        ('D', 'Design'),
-        ('S', 'Rede Social')
-    )
     logo = models.ImageField(upload_to="logo_empresa")
     nome = models.CharField(max_length=30)
     email = models.EmailField()
     cidade = models.CharField(max_length=30)
     tecnologias = models.ManyToManyField(Tecnologias)
     endereco = models.CharField(max_length=60)
-    nicho_mercado = models.CharField(max_length=3, choices=choices_nicho_mercado)
+    nicho_mercado = models.ForeignKey(Nichos, null=True , on_delete=models.SET_NULL)
     caracteristica_empresa = models.TextField()
 
     def __str__(self) -> str:

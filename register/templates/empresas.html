@@ -51,7 +51,7 @@ SELETI.VE | Empresas
             <table class="tabela" cellpadding="20">
                 <tr>
                     <th>Nome</th>
-                    <th>Endereço</th>
+                    <th>Cidade</th>
                     <th>Tecnologias usadas</th>
                     <th>Quantidade de vagas</th>
                     <th>Ação</th>
@@ -60,7 +60,7 @@ SELETI.VE | Empresas
                 {% for empresa in empresas%}
                 <tr {% if not forloop.counter|is_par %} class="tabela-linha" {% endif %}>
                     <td>{{empresa.nome}}</td>
-                    <td>{{empresa.endereco}}</td>
+                    <td>{{empresa.cidade}}</td>
                     <td>
                         <select class="form-select">
                             {% for tech in empresa.tecnologias.all %}

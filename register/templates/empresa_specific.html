@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
 {% block 'title' %}
 SELETI.VE | {{empresa.nome}}
 {% endblock%}
@@ -37,7 +36,7 @@ SELETI.VE | {{empresa.nome}}
     <div class="row">
         <div class="col-md-6">
             <label>Nicho de mercado:</label>
-            <input disabled type="text" class="form-control" value="{{empresa.get_nicho_mercado_display}}">
+            <input disabled type="text" class="form-control" value="{{empresa.nicho_mercado}}">
         </div>
 
         <div class="col-md-3">
@@ -45,7 +44,6 @@ SELETI.VE | {{empresa.nome}}
             <select class="form-select">
                 {% for tech in empresa.tecnologias.all %}
                 <option>{{tech}}</option>
-
                 {% endfor %}
             </select>
 

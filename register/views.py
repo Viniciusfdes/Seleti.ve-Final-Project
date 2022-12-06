@@ -2,13 +2,14 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from django.contrib.messages import constants
 from django.contrib import messages
-
-#from django.http import HttpResponse
+# from rembg import remove
+# from PIL import Image
 
 def nova_empresa(request):
     if request.method == "GET":
+        nichos = Nichos.objects.all()
         techs = Tecnologias.objects.all()
-        return render(request, 'nova_empresa.html', {'techs': techs})
+        return render(request, 'nova_empresa.html', {'techs': techs, 'nichos': nichos})
     elif request.method == "POST":
         nome = request.POST.get('nome')
         email = request.POST.get('email')
@@ -19,7 +20,7 @@ def nova_empresa(request):
         tecnologias = request.POST.getlist('tecnologias')
         logo = request.FILES.get('logo')
         
-        if (len(nome.strip()) == 0 or len(email.strip()) == 0 or len(cidade.strip()) == 0 or len(endereco.strip()) == 0 or len(nicho.strip()) == 0 or len(caracteristicas.strip()) == 0 or (not logo)): 
+        if (len(nome.strip()) == 0 or len(email.strip()) == 0 or len(cidade.strip()) == 0 or len(endereco.strip()) == 0 or len(caracteristicas.strip()) == 0 or (not logo)): 
             messages.add_message(request, constants.ERROR, 'Preencha todos os campos')
             return redirect('/home/nova_empresa')
 
@@ -27,12 +28,17 @@ def nova_empresa(request):
             messages.add_message(request, constants.ERROR, 'A logo da empresa deve ter menos de 10MB')
             return redirect('/home/nova_empresa')
 
-        if nicho not in [i[0] for i in Empresa.choices_nicho_mercado]:
-            messages.add_message(request, constants.ERROR, 'Nicho de mercado inválido')
-            return redirect('/home/nova_empresa')
+        # if nicho not in [i[0] for i in Nichos.nicho]:
+        #     messages.add_message(request, constants.ERROR, 'Nicho de mercado inválido')
+        #     return redirect('/home/nova_empresa')]
         
-        empresa = Empresa(logo=logo, nome=nome, email=email, cidade=cidade, endereco=endereco, nicho_mercado=nicho, caracteristica_empresa=caracteristicas)
+        empresa = Empresa(logo=logo, nome=nome, email=email, cidade=cidade, endereco=endereco, caracteristica_empresa=caracteristicas)
+        empresa.nicho_mercado = Nichos(id=nicho)
         empresa.save()
+        # img = Image.open('C:/Users/vinic/OneDrive/Área de Trabalho/DJANGO/seleti.ve/media/logo_empresa/' + str(logo))
+        # img_bg = remove(img)
+        # img_bg.save('C:/Users/vinic/OneDrive/Área de Trabalho/DJANGO/seleti.ve/media/logo_empresa/' + str(logo))
+        # empresa.logo=img_bg
         empresa.tecnologias.add(*tecnologias)
         empresa.save()
         messages.add_message(request, constants.SUCCESS, 'Empresa cadastrada com sucesso')

@@ -58,9 +58,9 @@ SELETI.VE | Nova inscrição
                     <div class="col-md">
                         <label>Nicho de mercado:</label>
                         <select class="form-control" name="nicho">
-                            <option value="M">Marketing</option>
-                            <option value="N">Nutrição</option>
-                            <option value="D">Design</option>
+                            {% for nicho in nichos %}
+                            <option value="{{nicho.id}}">{{nicho.nicho}}</option>
+                            {% endfor %}
                         </select>
                     </div>
                 </div>
