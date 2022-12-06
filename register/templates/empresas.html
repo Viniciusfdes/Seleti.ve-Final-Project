@@ -27,7 +27,7 @@ SELETI.VE | Empresas
         <div class="borda-box"></div>
         <div class="body-box">
 
-            <form action="{% url 'empresas' %}" method="GET">{% csrf_token %}
+            <form action="{% url 'empresas' %}" method="POST">{% csrf_token %}
                 <div class="row">
 
                     <div class="col-md-5">
@@ -78,7 +78,7 @@ SELETI.VE | Empresas
                     </td>
                     <td>
                         <a href="{% url 'excluir_empresa' empresa.id %}"
-                            onclick="return confirm('Tem certeza que deseja excluir esse usuário?')"
+                            onclick="return confirm('Tem certeza que deseja excluir a empresa {{empresa.nome}}?')"
                             class="btn-excluir">Excluir empresa</a>
                     </td>
                 </tr>

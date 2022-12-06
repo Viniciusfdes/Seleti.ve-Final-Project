@@ -39,8 +39,8 @@ def nova_empresa(request):
         return redirect('/home/empresas')
 
 def empresas(request):
-    technologias_filtrar = request.GET.get('tecnologias')
-    nome_filtrar = request.GET.get('nome')
+    technologias_filtrar = request.POST.get('tecnologias')
+    nome_filtrar = request.POST.get('nome')
     empresas = Empresa.objects.all()
 
     if technologias_filtrar:
