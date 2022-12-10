@@ -170,7 +170,7 @@ SELETI.VE | {{empresa.nome}}
                             <label>Empresa:</label>
                             <select name="empresa" class="form-select">
                                 {% for empresa_iter in empresas %}
-                                <option {% if empresa.id == empresa_iter.id %} selected {% endif %}
+                                <option {% if empresa.id==empresa_iter.id %} selected {% endif %}
                                     value="{{empresa_iter.id}}">{{empresa_iter}}</option>
                                 {% endfor %}
                             </select>
