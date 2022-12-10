@@ -5,8 +5,7 @@ from register.models import *
 from django.contrib.messages import constants
 from django.contrib import messages
 
-
-def nova_vaga(request):
+def nova_vaga(request, id):
     if request.method == "POST":
         titulo = request.POST.get('titulo')
         email = request.POST.get('email')
@@ -20,14 +19,14 @@ def nova_vaga(request):
         # TODO: validations
 
         vaga = Vagas(titulo=titulo, email=email, nivel_experiencia=experiencia, data_final=data_final, empresa_id=empresa, status=status)
-
         vaga.save()
 
         vaga.tecnologias_estudar.add(*tecnologias_nao_domina)
         vaga.tecnologias_dominadas.add(*tecnologias_domina)
 
-        vaga.save()
+        vaga.save()        
+        
         messages.add_message(request, constants.SUCCESS, 'Vaga criada com sucesso.')
-        return redirect(f'/home/empresa/{empresa}')
+        return redirect(f'/home/empresas/{id}')
     elif request.method == "GET":
         raise Http404()

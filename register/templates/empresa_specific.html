@@ -109,7 +109,7 @@ SELETI.VE | {{empresa.nome}}
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{% url 'nova_vaga' %}" method="POST"> {% csrf_token %}
+                <form action="{% url 'nova_vaga' empresa.id %}" method="POST"> {% csrf_token %}
                     <div class="row">
                         <div class="col-md">
                             <label>Título:</label>
@@ -169,9 +169,9 @@ SELETI.VE | {{empresa.nome}}
                         <div class="col-md">
                             <label>Empresa:</label>
                             <select name="empresa" class="form-select">
-                                {% for empresa_iter in empresas %}
-                                <option {% if empresa.id==empresa_iter.id %} selected {% endif %}
-                                    value="{{empresa_iter.id}}">{{empresa_iter}}</option>
+                                {% for empresa_select in empresas %}
+                                <option {% if empresa.id == empresa_select.id %} selected {% endif %}
+                                    value="{{empresa_select.id}}">{{empresa_select}}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -194,7 +194,6 @@ SELETI.VE | {{empresa.nome}}
                     </div>
                     <br>
                     <input type="submit" value="Nova empresa" class="btn btn-lg btn-orange">
-
                 </form>
             </div>
 

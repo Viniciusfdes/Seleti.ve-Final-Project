@@ -50,8 +50,9 @@ SELETI.VE | Empresas
 
             <table class="tabela" cellpadding="20">
                 <tr>
+                    <th>Especificar</th>
                     <th>Nome</th>
-                    <th>Cidade</th>
+                    <th>Endereço</th>
                     <th>Tecnologias usadas</th>
                     <th>Quantidade de vagas</th>
                     <th>Ação</th>
@@ -59,8 +60,15 @@ SELETI.VE | Empresas
 
                 {% for empresa in empresas%}
                 <tr {% if not forloop.counter|is_par %} class="tabela-linha" {% endif %}>
+                    <td>
+                        <a href="{% url 'empresa_specific' empresa.id  %}" class="btn">
+                            <span class="material-symbols-outlined especific">
+                                search
+                            </span>
+                        </a>
+                    </td>
                     <td>{{empresa.nome}}</td>
-                    <td>{{empresa.cidade}}</td>
+                    <td>{{empresa.endereco}}</td>
                     <td>
                         <select class="form-select">
                             {% for tech in empresa.tecnologias.all %}
@@ -79,7 +87,7 @@ SELETI.VE | Empresas
                     <td>
                         <a href="{% url 'excluir_empresa' empresa.id %}"
                             onclick="return confirm('Tem certeza que deseja excluir a empresa {{empresa.nome}}?')"
-                            class="btn-excluir">Excluir empresa</a>
+                            class="btn btn-excluir">Excluir empresa</a>
                     </td>
                 </tr>
                 {% endfor %}

@@ -13,7 +13,6 @@
     box-shadow: 4px 4px 10px rgba(0,0,0,.3);
 }
 
-
 .titulo{
     display: inline;
 }
@@ -41,9 +40,7 @@
 }
 
 .header-box{
-
     padding: 30px;
-
 }
 
 .borda-box{
@@ -55,11 +52,14 @@
 }
 
 .btn-orange{
-
     background-color: #ED8554;
     color: white;
 }
 
+.btn-orange:hover{
+    background-color: #e47541;
+    color: white;
+}
 
 .tabela{
     width: 100%;
@@ -77,4 +77,15 @@
     padding: 10px;
     border-radius: 10px;
     font-weight: bold;
+}
+
+.especific {
+    background-color: #ED8554;
+    color: #FFF;
+    border-radius: 6px;
+    padding: 8px;
+}
+
+.especific:hover{
+    background-color: #e47541;
 }

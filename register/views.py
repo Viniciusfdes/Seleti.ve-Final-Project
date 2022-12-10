@@ -64,7 +64,9 @@ def empresas(request):
 
 def excluir_empresa(request, id):
     empresa = Empresa.objects.get(id=id)
+    vagas = Vagas.objects.get(empresa_id=id)
     empresa.delete()
+    vagas.delete()
     messages.add_message(request, constants.SUCCESS, 'Empresa excluída com sucesso')
     return redirect('/home/empresas')
 
