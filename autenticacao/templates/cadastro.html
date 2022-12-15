@@ -1,0 +1,51 @@
+{% extends "base-auth.html" %}
+{% load static %}
+
+{% block 'title' %}
+SELETI.VE | Cadastro
+{% endblock%}
+
+{% block 'head' %}
+<link href="{% static 'css/cadastro.css' %}" rel="stylesheet">
+{% endblock%}
+
+{% block 'body' %}
+
+<div class="wrapper">
+    <div class="box">
+        <div class="header">
+            <h3 class="titulo">Cadastrar</h3>
+        </div>
+
+        {% if messages %}
+        {% for message in messages %}
+        <br>
+        <section class="alert {{message.tags}}">
+            {{message}}
+        </section>
+        {% endfor %}
+        {% endif %}
+
+        <div class="body-box">
+            <form action="{% url 'cadastro' %}" method="POST"> {% csrf_token %}
+                <br>
+                <span class="span-descricao">Nome de usuário:</span>
+                <input type="text" class="form-control input-cadastro" name="username">
+                <br>
+                <span class="span-descricao">Email:</span>
+                <input type="email" class="form-control input-cadastro" name="email">
+                <br>
+                <span class="span-descricao">Senha:</span>
+                <input type="password" class="form-control input-cadastro" name="password">
+                <br>
+                <span class="span-descricao">Confirmar senha:</span>
+                <input type="password" class="form-control input-cadastro" name="confirm-password">
+                <br>
+                <input type="submit" value="CADASTRAR" class="btn btn-success btn-lg">
+                <a href="{% url 'login' %}" class="btn btn-primary btn-lg">LOGIN</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
