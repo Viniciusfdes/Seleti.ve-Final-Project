@@ -18,11 +18,12 @@ def nova_empresa(request):
         cidade = request.POST.get('cidade')
         endereco = request.POST.get('endereco')
         nicho = request.POST.get('nicho')
+        cnpj = request.POST.get('cnpj')
         caracteristicas = request.POST.get('caracteristicas')
         tecnologias = request.POST.getlist('tecnologias')
         logo = request.FILES.get('logo')
         
-        if (len(nome.strip()) == 0 or len(email.strip()) == 0 or len(cidade.strip()) == 0 or len(endereco.strip()) == 0 or len(caracteristicas.strip()) == 0 or (not logo)): 
+        if (len(nome.strip()) == 0 or len(email.strip()) == 0 or len(cidade.strip()) == 0 or len(endereco.strip()) == 0 or len(cnpj.strip()) == 0 or len(caracteristicas.strip()) == 0 or (not logo)): 
             messages.add_message(request, constants.ERROR, 'Preencha todos os campos')
             return redirect('/home/nova_empresa')
 
@@ -34,7 +35,7 @@ def nova_empresa(request):
         #     messages.add_message(request, constants.ERROR, 'Nicho de mercado inválido')
         #     return redirect('/home/nova_empresa')]
         
-        empresa = Empresa(logo=logo, nome=nome, email=email, cidade=cidade, endereco=endereco, caracteristica_empresa=caracteristicas)
+        empresa = Empresa(logo=logo, nome=nome, email=email, cidade=cidade, endereco=endereco, cnpj=cnpj, caracteristica_empresa=caracteristicas)
         empresa.nicho_mercado = Nichos(id=nicho)
         empresa.save()
 

@@ -17,6 +17,7 @@ class Empresa(models.Model):
     nome = models.CharField(max_length=30)
     email = models.EmailField()
     cidade = models.CharField(max_length=30)
+    cnpj = models.CharField(max_length=18)
     tecnologias = models.ManyToManyField(Tecnologias)
     endereco = models.CharField(max_length=60)
     nicho_mercado = models.ForeignKey(Nichos, null=True , on_delete=models.SET_NULL)

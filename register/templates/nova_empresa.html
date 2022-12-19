@@ -67,6 +67,13 @@ SELETI.VE | Nova inscrição
                 <br>
                 <div class="row">
                     <div class="col-md">
+                        <label>CNPJ:</label>
+                        <input type="text" class="form-control" name="cnpj" id="id_cnpj" placeholder="CNPJ...">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md">
                         <label>Tecnologias usadas:</label>
                         <select class="form-control" name="tecnologias" multiple>
                             {% for tech in techs %}
@@ -97,4 +104,5 @@ SELETI.VE | Nova inscrição
     </div>
 </div>
 
+<script src="{% static 'js/nova_empresa.js' %}"></script>
 {% endblock%}
