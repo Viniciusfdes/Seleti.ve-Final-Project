@@ -8,7 +8,7 @@ class NichosAdmin(admin.ModelAdmin):
     list_display = ('id', 'nicho')
 
 class EmpresaAdmin(admin.ModelAdmin):
-    list_display = ('id', 'nome', 'email', 'cidade', 'nicho_mercado')
+    list_display = ('id', 'nome', 'email', 'cidade', 'nicho_mercado', 'cnpj')
 
 class VagasAdmin(admin.ModelAdmin):
     list_display = ('id', 'empresa', 'titulo', 'nivel_experiencia', 'data_final', 'status')
