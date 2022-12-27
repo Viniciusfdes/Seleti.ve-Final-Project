@@ -5,6 +5,12 @@ from register.models import *
 from django.contrib.messages import constants
 from django.contrib import messages
 
+def vagas_detais(request, id):
+    empresa_unica = get_object_or_404(Empresa, id=id)
+    empresas = Empresa.objects.all()
+    tecnologias = Tecnologias.objects.all()
+    vagas = Vagas.objects.filter(empresa_id=id)
+    return render(request, 'page-vagas-details.html', {'empresa': empresa_unica,'tecnologias': tecnologias, 'empresas': empresas,'vagas': vagas})
 
 def vaga_specific(request, id):
   vaga_unica = get_object_or_404(Vagas, id=id)
@@ -27,7 +33,7 @@ def vagas(request):
     empresas = empresas.filter(nome__icontains = nome_filtrar)
 
   tecnologias = Tecnologias.objects.all()
-  return render(request, 'vagas.html', {'empresas': empresas, 'tecnologias': tecnologias, 'vagas': vagas })
+  return render(request, 'page-vagas.html', {'empresas': empresas, 'tecnologias': tecnologias, 'vagas': vagas })
 
 def nova_vaga(request, id):
     if request.method == "POST":

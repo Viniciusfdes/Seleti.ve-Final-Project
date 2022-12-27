@@ -48,7 +48,7 @@
                         <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
                             <div class="d-flex justify-content-center py-4">
-                                <a href="#" class="logo d-flex align-items-center w-auto">
+                                <a href="{% url 'home' %}" class="logo d-flex align-items-center w-auto">
                                     <img src="assets/img/logo.png" alt="">
                                     <span class="d-none d-lg-block">Seleti.ve</span>
                                 </a>
@@ -64,6 +64,14 @@
                                     </div>
 
                                     <form class="row g-3 needs-validation" action="{% url 'login' %}" method="POST"> {% csrf_token %}
+
+                                        {% if messages %}
+                                        {% for message in messages %}
+                                        <section class="alert {{message.tags}}">
+                                            {{message}}
+                                        </section>
+                                        {% endfor %}
+                                        {% endif %}
 
                                         <div class="col-12">
                                             <label for="yourUsername" class="form-label">Usuário</label>

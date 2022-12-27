@@ -58,7 +58,7 @@ def login(request):
             login_django(request, user)
             return redirect('/home/empresas')
         else:
-            messages.add_message(request, constants.ERROR, 'Username ou senha inválidos')
+            messages.add_message(request, constants.ERROR, 'Usuário ou senha inválidos')
             return redirect('/auth/login')
 
         # if user.is_authenticated:

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Seleti.ve | Empresas</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    {% load static %}
+
+    <!-- Favicons
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
+    <link rel="shortcut icon" href="{% static 'img/logo_seleti.ve.png' %}">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/quill/quill.snow.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/quill/quill.bubble.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/simple-datatables/style.css' %}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{% static 'css/page-vagas.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center">
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <div class="logo">
+                <h1><a href="{% url 'home' %}">Seleti.ve</a></h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            </div>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="{% url 'home' %}">Início</a></li>
+                    <li><a class="nav-link scrollto" href="{% url 'home' %}">Sobre</a></li>
+                    <li><a class="nav-link scrollto" href="{% url 'home' %}">Time</a></li>
+                    <li><a class="nav-link scrollto" href="{% url 'home' %}">Empresas</a></li>
+                    <li><a class="nav-link scrollto" href="{% url 'home' %}">Experiências</a></li>
+                    <li><a class="nav-link scrollto" href="{% url 'home' %}">Contato</a></li>
+                    <li><a class="getstarted scrollto" href="{% url 'vagas-user' %}">Oportunidades</a></li>
+                    <li><a class="getstarted scrollto" href="{% url 'empresas' %}">Login</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+        </div>
+    </header><!-- End Header -->
+
+    <main>
+        <!-- <section id="hero" class="d-flex align-items-center"> -->
+        <section id="portfolio" class="portfolio">
+            <div class="container">
+                <br>
+                <div class="section-title" data-aos="fade-up">
+                    <h2>Oportunidades</h2>
+                </div>
+
+                <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="400">
+
+                    {% for empresa in empresas %}
+                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                        <div class="portfolio-wrap">
+                            <img src="/media/{{ empresa.logo }}" class="img-fluid" alt="">
+                            <div class="portfolio-info">
+                                <h4>{{empresa.nome}}</h4>
+                                <p>Quantidade de vagas: {{empresa.qtd_vagas}}</p>
+                                <div class="portfolio-links">
+                                    <a href="/media/{{ empresa.logo }}" data-gallery="portfolioGallery"
+                                        class="portfolio-lightbox" title="{{empresa.nome}}"><i
+                                            class="bx bx-plus"></i></a>
+                                    <a href="{% url 'vagas-details' empresa.id %}" title="{{empresa.nome}} detalhes"><i
+                                            class="bx bx-link"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+            <!-- </section> -->
+        </section>
+    </main>
+
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container">
+            <div class="row d-flex center">
+                <div class="col-lg-6">
+                    &copy; Copyright <strong>Seleti.ve</strong>. Todos os direitos reservados.
+                </div>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="{% static 'vendor/apexcharts/apexcharts.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/chart.js/chart.umd.js' %}"></script>
+    <script src="{% static 'vendor/echarts/echarts.min.js' %}"></script>
+    <script src="{% static 'vendor/quill/quill.min.js' %}"></script>
+    <script src="{% static 'vendor/simple-datatables/simple-datatables.js' %}"></script>
+    <!-- Scripts de validação -->
+    <!-- <script src="{% static 'vendor/tinymce/tinymce.min.js' %}"></script>
+    <script src="{% static 'vendor/php-email-form/validate.js' %}"></script> -->
+
+    <!-- Template Main JS File -->
+    <script src="{% static 'js/page-vagas.js' %}"></script>
+
+</body>
+
+</html>

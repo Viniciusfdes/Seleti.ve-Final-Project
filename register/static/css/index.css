@@ -955,12 +955,12 @@ section {
     color: #222222;
 }
 
-.contact .contact-about p {
+/* .contact .contact-about p {
     font-size: 14px;
     line-height: 24px;
     font-family: "Raleway", sans-serif;
     color: #888;
-}
+} */
 
 .contact .social-links {
     padding-bottom: 20px;
@@ -1002,24 +1002,6 @@ section {
     padding: 0 0 10px 42px;
     line-height: 28px;
     font-size: 14px;
-}
-
-
-.contact .php-email-form .form-group {
-    margin-bottom: 20px;
-}
-
-.contact .php-email-form input,
-.contact .php-email-form textarea {
-    border-radius: 0;
-    box-shadow: none;
-    font-size: 14px;
-    padding: 10px 15px;
-}
-
-.contact .php-email-form input:focus,
-.contact .php-email-form textarea:focus {
-    border-color: #ED8554;
 }
 
 .contact .php-email-form button[type=reset] {

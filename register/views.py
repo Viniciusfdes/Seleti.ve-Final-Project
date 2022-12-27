@@ -1,11 +1,9 @@
+from io import BytesIO
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import *
 from django.contrib.messages import constants
 from django.contrib import messages
-# from rembg import remove
-# from PIL import Image
-
 
 def home(request):
     return render(request, 'index.html')
@@ -38,17 +36,10 @@ def nova_empresa(request):
         # if nicho not in [i[0] for i in Nichos.nicho]:
         #     messages.add_message(request, constants.ERROR, 'Nicho de mercado inválido')
         #     return redirect('/home/nova_empresa')]
-        
+
         empresa = Empresa(logo=logo, nome=nome, email=email, cidade=cidade, endereco=endereco, cnpj=cnpj, caracteristica_empresa=caracteristicas)
         empresa.nicho_mercado = Nichos(id=nicho)
         empresa.save()
-
-        print(logo)
-
-        # img = Image.open('C:/Users/vinic/OneDrive/Área de Trabalho/DJANGO/seleti.ve/media/logo_empresa/' + str(logo))
-        # img_bg = remove(img)
-        # img_bg.save('C:/Users/vinic/OneDrive/Área de Trabalho/DJANGO/seleti.ve/media/logo_empresa/' + str(logo))
-        # empresa.logo=img_bg
 
         empresa.tecnologias.add(*tecnologias)
         empresa.save()
