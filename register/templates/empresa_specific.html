@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block 'title' %}
-SELETI.VE | {{empresa.nome}}
+SELETI.VE | {{vaga.titulo}}
 {% endblock%}
 
 {% block 'head' %}
@@ -68,7 +68,6 @@ SELETI.VE | {{empresa.nome}}
     <div class="row">
         {% for vaga in vagas %}
         <div class="col-md">
-
             <div class="box-vagas">
                 <div class="header-vagas">
                     {{vaga.titulo}}

@@ -53,6 +53,5 @@ class Vagas(models.Model):
     tecnologias_dominadas = models.ManyToManyField(Tecnologias)
     tecnologias_estudar = models.ManyToManyField(Tecnologias, related_name='estudar')
 
-
     def __str__(self):
         return self.titulo

@@ -1,0 +1,118 @@
+{% extends 'base_vagas.html' %}
+{% load static %}
+
+{% block 'title' %}
+SELETI.VE | {{vaga.titulo}}
+{% endblock%}
+
+{% block 'head' %}
+<link href="{% static 'css/vaga_specific.css' %}" rel="stylesheet">
+{% endblock%}
+
+{% block 'body' %}
+<div class='container'>
+  {% if messages %}
+    {% for message in messages %}
+    <br>
+    <section class="alert {{message.tags}}">
+        {{message}}
+    </section>
+    {% endfor %}
+  {% endif %}
+  
+  <div class='col-md' id='title'>
+    <h1 class='titulo'>{{vaga.titulo}}</h1>
+    <p class='paragrafo'> {{vaga.empresa}}</p>
+  </div>
+
+  <div class='row'>
+    <div class='col-md'>
+      <p>
+        <strong>Nivel de experiencia exigido:</strong>
+        {% if vaga.nivel_experiencia == 'J' %} Júnior {% endif %}
+        {% if vaga.nivel_experiencia == 'P' %} Pleno {% endif %}
+        {% if vaga.nivel_experiencia == 'S' %} Sênior {% endif %}
+      </p>
+      <p>
+        <strong>Status da vaga:</strong>
+        {% if vaga.status == 'I' %} Interesse {% endif %}
+        {% if vaga.status == 'C' %} Currículo enviado {% endif %}
+        {% if vaga.status == 'E' %} Entrevista {% endif %}
+        {% if vaga.status == 'D' %} Desafio técnico {% endif %}
+        {% if vaga.status == 'F' %} Finalizado {% endif %}
+      </p>
+      <p>
+        <strong>Data de termino:</strong>
+        {{ vaga.data_final }}
+      </p>
+    </div>
+  </div>
+
+  <div class='col'>
+    <div class='col-md'>
+      <h3> Tecnologias Necessarias </h3>
+      <ul list-style='none'>
+        {% for tech in vaga.tecnologias_dominadas.all %}
+          <li>{{tech}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class='col-md'>
+      <h3> Tecnologias Desejadas </h3>
+      <ul list-style='none'>
+        {% for tech in vaga.tecnologias_estudar.all %}
+          <li>{{tech}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <div>
+    <a href="mailto:{{ vaga.email }}">
+      <button class="btn btn-lg btn-orange">
+        Se candidatar!
+      </button>
+    </a>
+  </div>
+
+  <hr>
+
+  <h2 class='titulo-vagas'>Mais vagas em {{ vaga.empresa }}:</h2>
+  <div class="row">
+    {% for vaga in vagas_empresa %}
+    <div class="col-md">
+      <div class="box-vagas">
+        <div class="header-vagas">
+            {{vaga.titulo}}
+        </div>
+        <div class="body-vagas">
+          <div class="row">
+            <div class="col-md">
+              <label class="paragrafo">Nível:</label>
+              <br>
+              <label class="paragrafo paragrafo-orange">
+                {% if vaga.nivel_experiencia == 'J' %} Júnior {% endif %}
+                {% if vaga.nivel_experiencia == 'P' %} Pleno {% endif %}
+                {% if vaga.nivel_experiencia == 'S' %} Sênior {% endif %}
+              </label>
+            </div>
+            <div class="col-md">
+              <label class="paragrafo">Status <img src="{% static 'img/flag_green.png' %}"></label>
+              <br>
+              <label class="paragrafo paragrafo-orange">
+                {% if vaga.status == 'I' %} Interesse {% endif %}
+                {% if vaga.status == 'C' %} Currículo enviado {% endif %}
+                {% if vaga.status == 'E' %} Entrevista {% endif %}
+                {% if vaga.status == 'D' %} Desafio técnico {% endif %}
+                {% if vaga.status == 'F' %} Finalizado {% endif %}
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+{% endblock %}
