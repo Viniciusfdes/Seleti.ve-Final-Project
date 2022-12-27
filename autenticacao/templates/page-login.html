@@ -16,11 +16,11 @@
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
     <link rel="shortcut icon" href="{% static 'img/logo_seleti.ve.png' %}">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+     <!-- Google Fonts -->
+     <link href="https://fonts.gstatic.com" rel="preconnect">
+     <link
+         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+         rel="stylesheet"> 
 
     <!-- Vendor CSS Files -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -35,8 +35,8 @@
     <link href="{% static 'css/page-login.css' %}" rel="stylesheet">
 
 </head>
-
-<body>
+ 
+<body style="background-image: url('{% static 'img/login.svg' %}');">
 
     <main>
         <div class="container">
@@ -85,7 +85,7 @@
                                         <div class="col-12">
                                             <button class="btn w-100" type="submit">Login</button>
                                         </div>
-                                        <div class="col-12">
+                                        <div class="col-12 create-account">
                                             <p class="small mb-0">Não tem uma conta? <a
                                                     href="{% url 'cadastro' %}">Crie uma conta</a></p>
                                         </div>

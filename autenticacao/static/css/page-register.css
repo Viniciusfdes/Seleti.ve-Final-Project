@@ -5,17 +5,16 @@
 
 body {
     font-family: "Open Sans", sans-serif;
-    background: #7d2948f3;
     color: #000;
 }
 
 a {
-    color: #7d2948f5;
+    color: #7D2948;
     text-decoration: none;
 }
 
 a:hover {
-    color: #7d2948;
+    color: #7D2948;
     text-decoration: none;
 }
 
@@ -29,7 +28,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Nunito", sans-serif;
+    font-family: "Raleway", sans-serif;
 }
 
 /* Card */
@@ -37,7 +36,8 @@ h6 {
     margin-bottom: 30px;
     border: none;
     border-radius: 5px;
-    box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+    box-shadow: 0px 0 3px #fff;
+    width: 90vh;
 }
 
 .card-title {
@@ -45,18 +45,23 @@ h6 {
     font-size: 18px;
     font-weight: 500;
     color: #7D2948;
-    font-family: "Poppins", sans-serif;
-}
+    font-family: "Raleway", sans-serif;}
 
 .card-body {
-    padding: 0 20px 20px 20px;
+    padding: 0 30px 30px 30px;
+}
+
+.create-account{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .logo span {
-    font-size: 26px;
+    font-size: 36px;
     font-weight: 700;
-    color: #FFF;
-    font-family: "Nunito", sans-serif;
+    color: #fff;
+    font-family: "Raleway", sans-serif;
 }
 
 .back-to-top {
