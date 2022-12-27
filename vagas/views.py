@@ -29,7 +29,7 @@ def vagas(request):
   tecnologias = Tecnologias.objects.all()
   return render(request, 'vagas.html', {'empresas': empresas, 'tecnologias': tecnologias, 'vagas': vagas })
 
-def nova_vaga(request):
+def nova_vaga(request, id):
     if request.method == "POST":
         titulo = request.POST.get('titulo')
         email = request.POST.get('email')

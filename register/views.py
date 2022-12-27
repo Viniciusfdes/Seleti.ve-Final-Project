@@ -6,6 +6,10 @@ from django.contrib import messages
 # from rembg import remove
 # from PIL import Image
 
+
+def home(request):
+    return render(request, 'index.html')
+
 @login_required(login_url='/auth/login/')
 def nova_empresa(request):
     if request.method == "GET":

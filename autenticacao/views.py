@@ -9,10 +9,11 @@ from django.http import HttpResponse
 # Create your views here.    
 def cadastro(request):
     if request.method == "GET":
-        return render(request, 'cadastro.html')
+        return render(request, 'page-register.html')
     else:
-        username = request.POST.get('username')
+        name = request.POST.get('name')
         email = request.POST.get('email')
+        username = request.POST.get('username')
         password = request.POST.get('password')
         confirm_password = request.POST.get('confirm-password')
 
@@ -35,7 +36,7 @@ def cadastro(request):
             return redirect('/auth/cadastro')
 
         try:
-            user = User.objects.create_user(username=username, email=email, password=password)
+            user = User.objects.create_user(username=username, email=email, password=password, first_name=name)
             user.save()
             messages.add_message(request, constants.SUCCESS, 'Usuário criado com sucesso')
             return redirect('/auth/login')
@@ -46,7 +47,7 @@ def cadastro(request):
     
 def login(request):
     if request.method == "GET":
-        return render(request, 'login.html')
+        return render(request, 'page-login.html')
     else:
         username = request.POST.get('username')
         password = request.POST.get('password')

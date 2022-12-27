@@ -1,0 +1,80 @@
+:root {
+    scroll-behavior: smooth;
+    color: #FFF;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    background: #7d2948f3;
+    color: #000;
+}
+
+a {
+    color: #7d2948f5;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #7d2948;
+    text-decoration: none;
+}
+
+button {
+    background-color: #ED8554;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Nunito", sans-serif;
+}
+
+/* Card */
+.card {
+    margin-bottom: 30px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+}
+
+.card-title {
+    padding: 20px 0 15px 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: #7D2948;
+    font-family: "Poppins", sans-serif;
+}
+
+.card-body {
+    padding: 0 20px 20px 20px;
+}
+
+.logo span {
+    font-size: 26px;
+    font-weight: 700;
+    color: #FFF;
+    font-family: "Nunito", sans-serif;
+}
+
+.back-to-top {
+    color: #FFF;
+}
+
+.back-to-top:hover {
+    color: #ED8554;
+}
+
+.btn {
+    background-color: #ED8554;
+    border-color: #ED8554;
+    color: #FFF;
+}
+
+.btn:hover {
+    background-color: #ec6f35;
+    border-color: #ec6f35;
+    color: #FFF;
+}
