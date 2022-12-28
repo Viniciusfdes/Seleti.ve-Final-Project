@@ -4,6 +4,10 @@ body {
     background-color: #fafafa;
 }
 
+main {
+    height: 100vh;
+}
+
 a {
     color: #222222;
     text-decoration: none;

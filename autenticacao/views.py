@@ -55,8 +55,12 @@ def login(request):
         user = authenticate(username=username, password=password)
 
         if user:
-            login_django(request, user)
-            return redirect('/home/empresas')
+            if user.is_staff: 
+                login_django(request, user)
+                return redirect('/home/empresas')
+            else:
+                messages.add_message(request, constants.ERROR, 'Usuário sem acesso administrativo')
+                return redirect('/auth/login')
         else:
             messages.add_message(request, constants.ERROR, 'Usuário ou senha inválidos')
             return redirect('/auth/login')

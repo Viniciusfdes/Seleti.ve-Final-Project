@@ -70,6 +70,28 @@ def excluir_empresa(request, id):
     messages.add_message(request, constants.SUCCESS, 'Empresa excluída com sucesso')
     return redirect('/home/empresas')
 
+
+# @login_required(login_url='/auth/login/')
+# def editar_empresa(request, id):
+#     empresa = Empresa.objects.get(id = id)
+
+#     if request.POST:
+#         if form.is_valid():
+#             try:
+#                 form.save()
+#                 messages.add_message(request, constants.SUCCESS, 'Usuário cadastrado')
+#                 return redirect('/user/add')
+#             except:
+#                 pass
+           
+#     template_name = 'user_templates/user_change.html'
+#     context = {
+#         'user': user,
+#         'form': form
+#     }
+
+#     return render(request, template_name, context)
+
 @login_required(login_url='/auth/login/')
 def empresa_specific(request, id):
     empresa_unica = get_object_or_404(Empresa, id=id)
