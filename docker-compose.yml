@@ -1,0 +1,22 @@
+version: '3.7.9'
+
+services:
+  django:
+    command: gunicorn waycollect.wsgi:application --bind 0.0.0.0:8000
+    build: .
+    volumes:
+     - data_base:/home/app/banco
+     - static_dir:/home/app/main
+    ports:
+      - "8000:8000"
+  nginx:
+    build: ./nginx
+    ports:
+    - 80:80
+    volumes:
+      - static_dir:/home/app/main
+
+volumes:
+  data_base:
+  static_dir:
+      
