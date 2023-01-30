@@ -14,4 +14,4 @@ COPY . .
 
 EXPOSE 8000
 
-CMD [ "sh", "./entrypoint.sh" ]
+ENTRYPOINT [ "./entrypoint.sh" ]
